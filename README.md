@@ -38,8 +38,8 @@ Um backend para uma lista de tarefas utilizando Express e TypeScript.
 
 ### 4. Modelagem e Banco de Dados
 - [ ] Escolher ORM (Prisma, TypeORM, Sequelize)
-- [ ] Criar entidades e migrações:
-  - [ ] Usuário (`id`, `nome`, `email`, `senha`)
+- [x] Criar entidades, validações e migrações:
+  - [x] Usuário (`id`, `nome`, `email`, `senha`)
   - [ ] Tarefa (`id`, `titulo`, `descricao`, `status`, `usuario_id` como FK)
 - [ ] Configurar relações entre tabelas
 
