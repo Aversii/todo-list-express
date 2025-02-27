@@ -20,16 +20,16 @@ Um backend para uma lista de tarefas utilizando Express e TypeScript.
 - [x] Instalar dependências de desenvolvimento: `typescript`, `nodemon`, `ts-node`
 
 ### 2. Estrutura do Projeto
-- [ ] Criar estrutura de pastas:
-  - `src/`
-    - `controllers/`
-    - `models/`
-    - `routes/`
-    - `services/`
-    - `middlewares/`
-    - `config/`
-    - `utils/`
-    - `index.ts`
+ Criar estrutura de pastas:
+- [ ] - `src/`
+- [ ]    - `controllers/`
+- [x]    - `models/`
+- [ ]    - `routes/`
+- [ ]    - `services/`
+- [ ]    - `middlewares/`
+- [ ]    - `config/`
+- [ ]    - `utils/`
+- [ ]    - `index.ts`
 
 ### 3. Configuração do Servidor
 - [x] Criar o servidor Express em `index.ts`
@@ -38,8 +38,8 @@ Um backend para uma lista de tarefas utilizando Express e TypeScript.
 
 ### 4. Modelagem e Banco de Dados
 - [ ] Escolher ORM (Prisma, TypeORM, Sequelize)
-- [ ] Criar entidades e migrações:
-  - [ ] Usuário (`id`, `nome`, `email`, `senha`)
+- [x] Criar entidades, validações e migrações:
+  - [x] Usuário (`id`, `nome`, `email`, `senha`)
   - [ ] Tarefa (`id`, `titulo`, `descricao`, `status`, `usuario_id` como FK)
 - [ ] Configurar relações entre tabelas
 
