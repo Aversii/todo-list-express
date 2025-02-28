@@ -1,5 +1,6 @@
 import { randomUUID } from "crypto";
 import { UserValidations } from "../validations/UserValidations";
+import HashManagerService from "../../service/hashManager/HashManagerService";
 
 export class User {
   private readonly id: string;
@@ -13,6 +14,7 @@ export class User {
     this.password = password;
     this.email = email;
     UserValidations.ExecUserValidations(this.name, this.password, this.email);
+    this.SetPassword(password);
   }
 
   public GetId() {
@@ -31,8 +33,9 @@ export class User {
     return this.password;
   }
 
-  public SetPassword(newPassword: string) {
-    return (this.password = newPassword);
+  public async SetPassword(newPassword: string) {
+    return this.password = await HashManagerService.generateHash(newPassword)
+
   }
 
   public GetEmail() {
