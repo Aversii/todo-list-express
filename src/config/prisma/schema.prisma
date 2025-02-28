@@ -8,8 +8,17 @@ datasource db {
 }
 
 model User {
-  id       String @id
-  email    String @unique
+  id       String   @id
+  email    String   @unique
   name     String
   password String
+  tasks    Task[]
+}
+
+model Task {
+  id        String   @id
+  title     String
+  completed Boolean  @default(false)  
+  userId    String   
+  user      User     @relation(fields: [userId], references: [id])
 }
