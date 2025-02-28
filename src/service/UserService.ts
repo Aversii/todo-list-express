@@ -10,16 +10,6 @@ export const UserService = {
         throw new UserAlreadyExists();
       }
 
-      if (!user.GetEmail()) {
-        throw new UserEmailBlank();
-      }
-
-      if (!user.GetPassword()) {
-        throw new UserPasswordBlank();
-      }
-
-      // Aqui você pode adicionar mais validações de senha e email
-
       return await UserRepo.createUser(user);
     } catch (error: any) {
       throw error;
