@@ -8,17 +8,16 @@ export const UserController = {
   async createUser(req: Request, res: Response): Promise<Response> {
     try {
       const { name, email, password } = req.body;
-
-      UserValidations.ExecUserValidations(name, password, email);
-      const user = new User(name, password, email);
-      const createdUser = await UserService.createUser(user);
-      const token = Authenticator.generateToken({ id: user.GetId(), email: user.GetEmail() });
-
+  
+      const data = await User.create(name, password, email);  
+      const createdUser = await UserService.createUser(data);  
+      const token = Authenticator.generateToken({ id: data.GetId(), email: data.GetEmail() });
+  
       return res.status(201).json({ createdUser, token });
     } catch (error: any) {
       return res.status(error.statusCode || 500).json({ message: error.message });
     }
-  },
+  },  
 
   async getUserByEmail(req: Request, res: Response): Promise<Response> {
     try {
