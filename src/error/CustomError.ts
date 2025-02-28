@@ -63,3 +63,51 @@ export class InvalidRequest_BlankPassword extends CustomError {
       super(422, message);
     }
   }
+
+  export class UserAlreadyExists extends CustomError {
+    constructor() {
+      super(422, "User already exists with this email.");
+    }
+  }
+  
+  export class UserNotFound extends CustomError {
+    constructor() {
+      super(404, "User not found.");
+    }
+  }
+  
+  export class InvalidUserUpdate extends CustomError {
+    constructor() {
+      super(400, "Invalid data provided for updating the user.");
+    }
+  }
+  
+  export class UserDeletionFailed extends CustomError {
+    constructor() {
+      super(400, "Failed to delete user. User may not exist.");
+    }
+  }
+  
+  export class UserEmailBlank extends CustomError {
+    constructor() {
+      super(422, "Email cannot be blank.");
+    }
+  }
+  
+  export class UserPasswordBlank extends CustomError {
+    constructor() {
+      super(422, "Password cannot be blank.");
+    }
+  }
+  
+  export class UserPasswordWeak extends CustomError {
+    constructor() {
+      super(422, "Password is too weak. Please use letters, numbers, and special characters.");
+    }
+  }
+  
+  export class UserEmailInvalid extends CustomError {
+    constructor() {
+      super(422, "Email is invalid. Use the format 'example@domain.com'.");
+    }
+  }

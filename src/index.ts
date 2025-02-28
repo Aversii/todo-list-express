@@ -1,7 +1,7 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import { User } from "./model/user/User";
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import userRouter from './routes/UserRoutes';
 
 dotenv.config();
 
@@ -12,9 +12,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Configuração das rotas
+app.use('/api', userRouter);
+
 // Rota de teste
-app.get("/", (req, res) => {
-  res.json({ message: "🚀 Todo List API está rodando com sucesso!" });
+app.get('/', (req: Request, res: Response) => {
+  res.json({ message: '🚀 Todo List API está rodando com sucesso!' });
 });
 
 // Iniciar o servidor
