@@ -42,4 +42,15 @@ export const UserRepo = {
     });
   },
 
-};
+  async getUserByEmailAndPassword(email: string, password: string) {
+    return await prisma.user.findFirst({
+      where: {
+        AND: [
+          { email },
+          { password },
+        ],
+      },
+    });
+  
+  }
+}

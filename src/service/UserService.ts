@@ -1,6 +1,14 @@
-import { UserAlreadyExists, UserEmailBlank, UserPasswordBlank, UserNotFound, InvalidUserUpdate, UserDeletionFailed } from "../error/CustomError";
+import {
+  UserAlreadyExists,
+  UserEmailBlank,
+  UserNotFound,
+  InvalidUserUpdate,
+  UserDeletionFailed,
+  InvalidRequest_WrongPassword,
+} from "../error/CustomError";
 import { User } from "../model/user/User";
 import { UserRepo } from "../repo/UserRepo";
+import HashManagerService from "./hashManager/HashManagerService";
 
 export const UserService = {
   async createUser(user: User) {
@@ -14,6 +22,24 @@ export const UserService = {
     } catch (error: any) {
       throw error;
     }
+  },
+
+  async login(email: string, password: string) {
+    const existingUser = await UserRepo.getUserByEmail(email);
+
+    if (!existingUser) {
+      throw new UserAlreadyExists();
+    }
+
+    const isPasswordValid = await HashManagerService.compareHash(
+      password,
+      existingUser.password
+    );
+    if (!isPasswordValid) {
+      throw new InvalidRequest_WrongPassword();
+    }
+
+    return existingUser;
   },
 
   async getUserByEmail(email: string) {

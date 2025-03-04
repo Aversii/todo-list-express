@@ -7,6 +7,7 @@ const asyncHandler = (fn: Function) => (req: any, res: any, next: any) =>
 
 userRouter.get('/users', asyncHandler(UserController.getAllUsers)); 
 userRouter.post('/users', asyncHandler(UserController.createUser));
+userRouter.post('/users/login', asyncHandler(UserController.login));
 userRouter.get('/users/:email', asyncHandler(UserController.getUserByEmail)); 
 userRouter.get('/users/id/:id', asyncHandler(UserController.getUserById)); 
 userRouter.put('/users/:id', asyncHandler(UserController.updateUser));

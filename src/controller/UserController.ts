@@ -19,6 +19,20 @@ export const UserController = {
     }
   },  
 
+  async login(req: Request, res: Response): Promise<Response> {
+    try {
+      const { email, password } = req.body;
+
+      const createdUser = await UserService.login(email, password);  
+      const token = Authenticator.generateToken({ id: createdUser.id, email: createdUser.email });
+  
+      return res.status(200).json({ token });
+    } catch (error: any) {
+      return res.status(error.statusCode || 500).json({ message: error.message });
+    }
+  },  
+
+
   async getUserByEmail(req: Request, res: Response): Promise<Response> {
     try {
       const { email } = req.params;
