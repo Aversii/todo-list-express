@@ -117,3 +117,62 @@ export class UserEmailInvalid extends CustomError {
     super(422, "O e-mail é inválido. Use o formato 'exemplo@dominio.com'.");
   }
 }
+
+export class InvalidRequest_BlankTitle extends CustomError {
+  constructor() {
+    super(422, "O título não pode estar em branco.");
+  }
+}
+
+export class InvalidRequest_ShortTitle extends CustomError {
+  constructor() {
+    super(422, "O título deve ter pelo menos 3 caracteres.");
+  }
+}
+
+export class InvalidRequest_BigTitle extends CustomError {
+  constructor() {
+    super(422, "O título é muito grande e excede o limite de 100 caracteres.");
+  }
+}
+
+export class InvalidRequest_InvalidTitle extends CustomError {
+  constructor() {
+    super(422, "O título só pode conter letras, números e espaços.");
+  }
+}
+
+export class InvalidRequest_BlankDescription extends CustomError {
+  constructor() {
+    super(422, "A descrição não pode estar em branco.");
+  }
+}
+
+export class InvalidRequest_BigDescription extends CustomError {
+  constructor() {
+    super(422, "A descrição excede o limite de 500 caracteres.");
+  }
+}
+
+export class InvalidRequest_InvalidStatus extends CustomError {
+  constructor() {
+    super(422, "O status da tarefa é inválido. Os valores permitidos são: 'pending', 'in_progress', 'completed'.");
+  }
+}
+export class TaskNotFound extends CustomError {
+  constructor() {
+    super(404, "Tarefa não encontrada.");
+  }
+}
+
+export class InvalidTaskUpdate extends CustomError {
+  constructor() {
+    super(400, "Os dados fornecidos para atualização da tarefa são inválidos.");
+  }
+}
+
+export class TaskDeletionFailed extends CustomError {
+  constructor() {
+    super(400, "Falha ao excluir tarefa. A tarefa pode não existir.");
+  }
+}
